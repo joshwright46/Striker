@@ -55,6 +55,7 @@ def login(request):
 
 def success(request):
     if request.session['logged_in'] != True:
+        print("User logged in...")
         return redirect('/')
 
     else:
