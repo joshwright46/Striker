@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Strikers Home Page</title>
+</head>
+
+<body style="background-color: black">
+    <div class="container mt-5">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"
+            style="height:100px; background-image: linear-gradient(to right,black,  darkred , slateblue, black)" ;>
+            <img src="strike2.jpg" alt="">
+            <a class="mr-2" href="/"><img src="https://fontmeme.com/permalink/190806/c5b873fa0a7299c928344381f8971130.png" alt="graffiti-fonts" border="0"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link text-light " style="font-size: 17px" href="#">Home <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" style="font-size: 17px" href="#">My Profile</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light " style="font-size: 17px" href="#"
+                            id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">About Us</a>
+                            <a class="dropdown-item" href="#">Contact Us</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">How Does It Work?</a>
+                        </div>
+                    </li>
+                </ul>
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="form-group form-inline d-inline-block">
+                            <label class="d-inline-block text-light" for="email">Email:</label>
+                            <input type="email" name="log_email" class="form-control-sm d-inline-block mr-2" id="email"
+                                placeholder="Enter email">
+                        </div>
+                        <div class="form-group form-inline d-inline-block">
+                            <label class="d-inline-block text-light" for="password">Password:</label>
+                            <input type="password" name="log_password" class="form-control-sm d-inline-block mr-2"
+                                id="password" placeholder="Enter password">
+                        </div>
+                        <div class="form-group form-inline">
+                            <input type="submit" value="Login" class="form-control-sm btn-sm btn-dark d-inline-block mr-2">
+                        </div>
+                    </div>
+                </form>
+
+                {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                {% if 'login_error' in message.extra_tags%}
+                <div class="alert alert-danger">{{ message }}</div>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+            </div>
+        </nav>
+
+        <div class="jumbotron m-0 text-center" style="background: url(strike.jpg);">
+            <div class="col-5 pt-5 d-inline-block align-top text-light mr-4 shadow">
+                <h1 class="row mb-5 mt-5 ml-0">•<img src="https://fontmeme.com/permalink/190806/5d4283756e6108f342b22e0dbbdfdbd0.png" alt="graffiti-fonts" border="0"></h1>
+                <h1 class="row mb-5 mt-5 ml-0">•<img src="https://fontmeme.com/permalink/190806/da30969abf8c38131a316d4c8bc5a777.png" alt="graffiti-fonts" border="0"></h1>
+                <h1 class="row mb-5 mt-5 ml-0">•<img src="https://fontmeme.com/permalink/190806/52129f9c6131de5a2d947c6c0523b918.png" alt="graffiti-fonts" border="0"></h1>
+                <h1 class="row mb-5 mt-5 ml-0">•<img src="https://fontmeme.com/permalink/190806/70491f4394f1671dffa54e6af1c8dc74.png" alt="graffiti-fonts" border="0"></h1>
+            </div>
+            <div class="col-5 rounded d-inline-block align-top text-light" style="background-color: black">
+                <form action="/registration" method="post">
+                    {% csrf_token %}
+                    <div class="col">
+                        <div class="form-group row">
+                            <label for="first_name">First Name:</label>
+                            <input type="text" name="first_name" class="form-control" id="first_name"
+                                placeholder="Enter first name">
+                        </div>
+                        <div class="form-group row">
+                            <label for="last_name">Last Name:</label>
+                            <input type="text" name="last_name" class="form-control" id="last_name"
+                                placeholder="Enter last name">
+                        </div>
+                        <div class="form-group row">
+                            <label for="user_name">User Name:</label>
+                            <input type="text" name="user_name" class="form-control" id="user_name"
+                                placeholder="Choose a user name">
+                        </div>
+                        <div class="form-group row">
+                            <label for="email">Email:</label>
+                            <input type="email" name="reg_email" class="form-control" id="email"
+                                placeholder="Enter email">
+                        </div>
+                        <div class="form-group row">
+                            <label for="password">Password:</label>
+                            <input type="password" name="reg_password" class="form-control" id="password"
+                                placeholder="Enter password">
+                        </div>
+                        <div class="form-group row">
+                            <label for="confirm_password">Confirm Password:</label>
+                            <input type="password" name="confirm_password" class="form-control" id="confirm_password"
+                                placeholder="Re-enter password">
+                        </div>
+                        <div class="form-group row">
+                            <input type="submit" value="Register" class="form-control btn btn-light btn-block shadow">
+                        </div>
+                    </div>
+                </form>
+                {% if messages %}
+                {% for message in messages %}
+                {%if 'reg_error' in message.extra_tags %}
+                <div class="alert alert-danger">{{ message }}</div>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+            </div>
+
+        </div>
+
+        <div class="footer text-center pt-3 pb-3 text-light"
+            style="height:100px; background-image: linear-gradient(to right, black, slateblue  , darkred, black)">
+            <p>
+                <a class="text-light" href="">About Us </a>|
+                <a class="text-light" href="/faq"> FAQ </a>|
+                <a class="text-light" href=""> Contact Us</a>
+
+            </p>
+            <p>
+                <img style=" width: 30px" src="fb.png" alt="">
+                <a class="mr-3" href="">@Strikers</a>
+                <img style=" width: 30px" src="ig.png" alt="">
+                <a class="mr-3" href="">@Strikers</a>
+                <img style=" width: 30px" src="t.png" alt="">
+                <a class="mr-3" href="">@Strikers</a>
+            </p>
+
+
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
