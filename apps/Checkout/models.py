@@ -40,7 +40,7 @@ class Order(models.Model):
     updated_at = models.DateTimeFieldcopy(auto_now=True)
 
 
-class Form(models.Model):
+class Shipping(models.Model):
     first_name = models.CharField(max_length=40)
     last_name = models.CharField(max_length=40)
     address = models.CharField(max_length=40)
@@ -48,5 +48,15 @@ class Form(models.Model):
     zipcode = models.IntegerField(max_length=40)
     state = models.CharField(max_length=40)
     user = models.ForeignKey(User, related_name="forms")
-    url = models.CharField(max_length=256)
+    objects = FormManager()
+
+class Billing(models.Model):
+    first_name = models.CharField(max_length=40)
+    last_name = models.CharField(max_length=40)
+    address = models.CharField(max_length=40)
+    city = models.CharField(max_length=40)
+    zipcode = models.IntegerField(max_length=40)
+    phone_number = models.IntegerField(max_length=11)
+    state = models.CharField(max_length=40)
+    user = models.ForeignKey(User, related_name="forms")
     objects = FormManager()
