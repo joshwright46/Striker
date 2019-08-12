@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Profile</title>
+    {% load static %}
 </head>
 
 <body style="background-color: black">
@@ -15,7 +16,9 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light"
             style="height:100px; background-image: linear-gradient(to right,black,  darkred , slateblue, black)" ;>
             <img src="strike2.jpg" alt="">
-            <a class="mr-2" href="/"><img src="https://fontmeme.com/permalink/190806/c5b873fa0a7299c928344381f8971130.png" alt="graffiti-fonts" border="0"></a>
+            <a class="mr-2" href="/"><img
+                    src="https://fontmeme.com/permalink/190806/c5b873fa0a7299c928344381f8971130.png"
+                    alt="graffiti-fonts" border="0"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,7 +31,7 @@
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" style="font-size: 17px" href="#">My Profile</a>
+                        <a class="nav-link text-light" style="font-size: 17px" href="/to_profile">My Profile</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light " style="font-size: 17px" href="#"
@@ -37,8 +40,8 @@
                             Dropdown
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">About Us</a>
-                            <a class="dropdown-item" href="#">Contact Us</a>
+                            <a class="dropdown-item" href="/about">About Us</a>
+                            <a class="dropdown-item" href="/contact">Contact Us</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
@@ -52,9 +55,10 @@
         </nav>
 
         <div class="jumbotron m-0 text-center" style="background-color: black">
-            <a href="https://fontmeme.com/graffiti-fonts/"><img
+            <!-- <a href="https://fontmeme.com/graffiti-fonts/"><img
                     src="https://fontmeme.com/permalink/190807/f3bc53c13a154c10c13064428684f3de.png"
-                    alt="graffiti-fonts" border="0"></a>
+                    alt="graffiti-fonts" border="0"></a> -->
+            <h1 class="text-light">FAQ</h1>
             <hr>
             <div class="question row">
                 <p class="d-inline-block text-light col-1 pt-2"><a href="https://fontmeme.com/graffiti-fonts/"><img
@@ -130,18 +134,18 @@
         <div class="footer text-center pt-3 pb-3 text-light"
             style="height:100px; background-image: linear-gradient(to right, black, slateblue  , darkred, black)">
             <p>
-                <a class="text-light" href="">About Us </a>|
-                <a class="text-light" href=""> FAQ </a>|
-                <a class="text-light" href=""> Contact Us</a>
+                <a class="text-light" href="/about">About Us </a>|
+                <a class="text-light" href="/faq"> FAQ </a>|
+                <a class="text-light" href="/contact"> Contact Us</a>
 
             </p>
             <p>
-                <img style=" width: 30px" src="fb.png" alt="">
-                <a class="mr-3" href="">@Strikers</a>
-                <img style=" width: 30px" src="ig.png" alt="">
-                <a class="mr-3" href="">@Strikers</a>
-                <img style=" width: 30px" src="t.png" alt="">
-                <a class="mr-3" href="">@Strikers</a>
+                <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/fb.png' %}" alt="" />
+                    @Strikers</a>
+                <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/ig.png' %}" alt="" />
+                    @Strikers</a>
+                <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/t.png' %}" alt="">
+                    @Strikers</a>
             </p>
 
 

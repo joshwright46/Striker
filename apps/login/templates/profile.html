@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Profile</title>
+    {% load static %}
+
+</head>
+
+<body style="background-color: black">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"
+            style="height:100px; background-image: linear-gradient(to right,black,  darkred , slateblue, black)" ;>
+            <img src="strike2.jpg" alt="">
+            <a class="mr-2" href="/"><img
+                    src="https://fontmeme.com/permalink/190806/c5b873fa0a7299c928344381f8971130.png"
+                    alt="graffiti-fonts" border="0"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link text-light " style="font-size: 17px" href="#">Home <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" style="font-size: 17px" href="/to_profile">My Profile</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light " style="font-size: 17px" href="#"
+                            id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/about">About Us</a>
+                            <a class="dropdown-item" href="/contact">Contact Us</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn text-light  my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="jumbotron m-0 text-center" style="background-color: black">
+
+            <div class="head_pic"
+                style="background: url('{{user.profile_pic}}'); -webkit-background-size: cover; background-size: cover; height:300px">
+            </div>
+            <div class="pic" style="position: relative; top: -100px; margin-bottom: -200px;">
+                <img style="width: 200px; height: 200px; max-width: 200px; max-height: 200px; border-radius: 50%; border: 5px solid black  "
+                    src="strike.jpg" alt="">
+            </div>
+            <div class="info bg-dark" style="padding: 5%;">
+                <h3 class="text-light mt-5">User Name</h3>
+                <h4 class="text-light">Chicago, IL</h4>
+                <p class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque corrupti laborum
+                    cupiditate aliquid? Et quam fuga unde similique, facilis voluptas ullam, molestias quos eius
+                    eligendi ratione, incidunt hic possimus a.</p>
+                <hr>
+
+
+                <div class="text-light d-inline-block" id="info"><a class="text-light" href="#">Info </a> |</div>
+                <div class="text-light d-inline-block" id="recent"><a class="text-light" href="#">Recent Purchases</a> |
+                </div>
+                <div class="text-light d-inline-block" id="favorites"><a class="text-light" href="#">Favorites</a></div>
+                <div class="text-light mt-3 row" id="info_panel">
+                    <div class="col d-inline-block border-right pl-5">
+                        <h2 class="row">Shipping</h2>
+                        <p class="row">Name:</p>
+                        <p class="row">Address:</p>
+                        <p class="row">City:</p>
+                        <p class="row">State:</p>
+                        <p class="row">Zip:</p>
+                    </div>
+                    <div class="col d-inline-block pl-5">
+                        <h2 class="row">Billing</h2>
+                        <p class="row">Name:</p>
+                        <p class="row">Address:</p>
+                        <p class="row">City:</p>
+                        <p class="row">State:</p>
+                        <p class="row">Zip:</p>
+
+                    </div>
+                </div>
+                <div class="text-light mt-3" style="display: none" id="recent_panel">bkjbfnlnfdnaslfndkns</div>
+                <div class="text-light mt-3" style="display: none" id="favorites_panel">hi</div>
+
+
+
+            </div>
+
+        </div>
+
+        <div class="footer text-center pt-3 pb-3 text-light"
+            style="height:100px; background-image: linear-gradient(to right, black, slateblue  , darkred, black)">
+            <p>
+                <a class="text-light" href="/about">About Us </a>|
+                <a class="text-light" href="/faq"> FAQ </a>|
+                <a class="text-light" href="/contact"> Contact Us</a>
+
+            </p>
+            <p>
+                <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/fb.png' %}" alt="" />
+                    @Strikers</a>
+                <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/ig.png' %}" alt="" />
+                    @Strikers</a>
+                <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/t.png' %}" alt="">
+                    @Strikers</a>
+            </p>
+
+
+        </div>
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="{% static 'js/profile.js' %}"></script>
+</body>
+
+</html>
