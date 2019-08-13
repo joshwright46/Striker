@@ -16,4 +16,11 @@ $(document).ready(function () {
         $("#info_panel").slideUp();
         $("#recent_panel").slideUp();
     });
+
+    // $("#submit").click(function(){
+    //     $("#profile_pic").submit();
+    //     $("#bio").submit();
+    //     $("#shipping").submit();
+    //     $("#billing").submit();
+    // });
 });
