@@ -1,12 +1,17 @@
 from django.shortcuts import render, redirect
 from .models import User
+from .forms import *
 from django.contrib import messages
 import bcrypt
 
 def index(request):
     if 'logged_in' not in request.session:
         request.session['logged_in'] = False
-    return render(request, 'index.html')
+    context={
+        'logged_in': request.session['logged_in'],
+    }
+    
+    return render(request, 'index.html', context)
 
 def registration(request):
     reg_errors = User.objects.basic_validator(request.POST)
@@ -47,7 +52,7 @@ def login(request):
 
             request.session['logged_in'] = True
 
-            return redirect('/success')
+            return redirect('/')
 
         else:
             messages.error(request, "Your login info is incorrect!", extra_tags='login_error')
@@ -67,6 +72,51 @@ def success(request):
 
 def faq(request):
     return render(request, 'faq.html')
+
+def pic_upload(request):
+    form = DocumentForm(request.POST, request.FILES)
+    if form.is_valid():
+        user = User.objects.get(id = request.session['current_user_id'])
+        user.profile_pic = request.FILES['profile_pic']
+        user.save()
+        return redirect('/profile')
+    else:
+        #error message about empty field
+        return redirect('/profile')
+
+def new_profile(request):
+    form = DocumentForm()
+    current_user = User.objects.get(id = request.session['current_user_id'])
+    context = {
+        'current_user': current_user,
+        'form': form
+    }
+    return render(request, 'new_profile.html',context)
+
+def profile(request):
+    current_user = User.objects.get(id = request.session['current_user_id'])
+    context = {
+        'current_user': current_user
+    }
+    return render(request, 'profile.html', context)
+
+def to_profile(request):
+    user = User.objects.get(id = request.session['current_user_id'])
+
+    if request.session['logged_in'] != True:
+        return redirect('/')
+        
+    elif user.profile_pic:
+        return redirect('/profile')
+
+    else:
+        return redirect("/new_profile")
+    
+def about(request):
+    return render(request, "about.html")
+
+def contact(request):
+    return render(request, "contact.html")
 
 def logout(request):
     request.session.clear()
