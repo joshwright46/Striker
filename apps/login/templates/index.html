@@ -37,6 +37,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light"
             style="height:100px; background-image: linear-gradient(to right,black,  darkred , slateblue, black)" ;>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <img src="" class="img-responsive" alt="">
 
             <a class="mr-2" href="/"><img src="" alt="" border="0"></a>
@@ -44,6 +45,10 @@
             <img src="images/strikersb.png" alt="">
             <a class="mr-2" href="/"><img
                     src="images/strikersb.png"
+=======
+            <img src="strike2.jpg" alt="">
+            <a class="mr-2" href="/"><img style="width: 275px" src="{% static 'images/strikersb.png' %}"
+>>>>>>> b6636b5bb9b91368488019f262404ac455022b9c
                     alt="graffiti-fonts" border="0"></a>
 >>>>>>> master
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -116,21 +121,17 @@
             </div>
         </nav>
 
+
+
+
         <div class="jumbotron m-0 text-center" style="background: url(strike.jpg);">
             <div class="col-5 pt-5 d-inline-block align-top text-light mr-4 shadow">
-                <h1 class="row mb-5 mt-5 ml-0">•<img
-                        src="https://fontmeme.com/permalink/190806/5d4283756e6108f342b22e0dbbdfdbd0.png"
-                        alt="graffiti-fonts" border="0"></h1>
-                <h1 class="row mb-5 mt-5 ml-0">•<img
-                        src="https://fontmeme.com/permalink/190806/da30969abf8c38131a316d4c8bc5a777.png"
-                        alt="graffiti-fonts" border="0"></h1>
-                <h1 class="row mb-5 mt-5 ml-0">•<img
-                        src="https://fontmeme.com/permalink/190806/52129f9c6131de5a2d947c6c0523b918.png"
-                        alt="graffiti-fonts" border="0"></h1>
-                <h1 class="row mb-5 mt-5 ml-0">•<img
-                        src="https://fontmeme.com/permalink/190806/70491f4394f1671dffa54e6af1c8dc74.png"
-                        alt="graffiti-fonts" border="0"></h1>
+                <h1 class="row mb-5 mt-5 ml-0" style="font-family: lady radical; font-size: 60px">• cop every time</h1>
+                <h1 class="row mb-5 mt-5 ml-0" style="font-family: lady radical; font-size: 60px">• increase odds</h1>
+                <h1 class="row mb-5 mt-5 ml-0" style="font-family: lady radical; font-size: 60px">• new releases</h1>
+                <h1 class="row mb-5 mt-5 ml-0" style="font-family: lady radical; font-size: 60px">• what you want</h1>
             </div>
+
             <div class="col-5 rounded d-inline-block align-top text-light" style="background-color: black">
                 <h2>Register</h2>
                 <form action="/registration" method="post">
@@ -185,12 +186,12 @@
 
             </p>
             <p>
-                <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/fb.png' %}" alt=""/>
-                @Strikers</a>
-                <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/ig.png' %}" alt=""/>
-                @Strikers</a>
+                <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/fb.png' %}" alt="" />
+                    @Strikers</a>
+                <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/ig.png' %}" alt="" />
+                    @Strikers</a>
                 <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/t.png' %}" alt="">
-                @Strikers</a>
+                    @Strikers</a>
             </p>
 
 
@@ -207,6 +208,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+    <script src="{% static 'js/profile.js' %}"></script>
 </body>
 
 </html>

@@ -16,8 +16,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light"
             style="height:100px; background-image: linear-gradient(to right,black,  darkred , slateblue, black)" ;>
             <img src="strike2.jpg" alt="">
-            <a class="mr-2" href="/"><img
-                    src="https://fontmeme.com/permalink/190806/c5b873fa0a7299c928344381f8971130.png"
+            <a class="mr-2" href="/"><img style="width: 275px" src="{% static 'images/strikersb.png' %}"
                     alt="graffiti-fonts" border="0"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +56,8 @@
         <div class="jumbotron m-0 text-center" style="background-color: black">
             <div class="col">
                 <div class="row d-block" style="margin-top:150px;">
-                    <h1 class="border-bottom text-light mb-5 pb-5">Contact Us!</h1>
+                    <h1 class="border-bottom text-light mb-5 pb-5" style="font-family: lady radical; font-size: 60px">
+                        contact us!</h1>
                 </div>
                 <div class="row d-block">
                     <p class="text-light">Chicago, IL</p>
@@ -111,6 +111,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+    <script src="{% static 'js/profile.js' %}"></script>
 </body>
 
 </html>
