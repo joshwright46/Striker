@@ -17,7 +17,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light"
             style="height:100px; background-image: linear-gradient(to right,black,  darkred , slateblue, black)" ;>
             <img src="strike2.jpg" alt="">
-            <a class="mr-2" href="/"><img style="width: 275px"
+            <a class="mr-2" href="/"><img style="width: 220px"
                 src="{% static 'images/strikersb.png' %}"
                 alt="graffiti-fonts" border="0"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -38,13 +38,16 @@
                         <a class="nav-link dropdown-toggle text-light " style="font-size: 17px" href="#"
                             id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                            Dropdown
+                            Info
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/about">About Us</a>
-                            <a class="dropdown-item" href="/contact">Contact Us</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="/about">About Us</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/contact">Contact Us</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/hiw">How Does It Work?</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Leaderboard</a>
                         </div>
                     </li>
                 </ul>
@@ -65,11 +68,9 @@
                     src="strike.jpg" alt="">
             </div>
             <div class="info bg-dark" style="padding: 5%;">
-                <h3 class="text-light mt-5">User Name</h3>
-                <h4 class="text-light">Chicago, IL</h4>
-                <p class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque corrupti laborum
-                    cupiditate aliquid? Et quam fuga unde similique, facilis voluptas ullam, molestias quos eius
-                    eligendi ratione, incidunt hic possimus a.</p>
+                <h3 class="text-light mt-5">{{current_user.user_name}}</h3>
+                <h4 class="text-light">{{current_user.shipping_form.city}}, {{current_user.shipping_form.state}}</h4>
+                <p class="text-light">{{current_user.bio}}</p>
                 <hr>
 
 
@@ -79,20 +80,20 @@
                 <div class="text-light d-inline-block" id="favorites"><a class="text-light" href="#">Favorites</a></div>
                 <div class="text-light mt-3 row" id="info_panel">
                     <div class="col d-inline-block border-right pl-5">
-                        <h2 class="row">Shipping</h2>
-                        <p class="row">Name:</p>
-                        <p class="row">Address:</p>
-                        <p class="row">City:</p>
-                        <p class="row">State:</p>
-                        <p class="row">Zip:</p>
+                        <h2 class="row" style="font-family: lady radical">shipping</h2>
+                        <p class="row" >Name: {{current_user.first_name}} {{current_user.last_name}}</p>
+                        <p class="row">Address: {{current_user.shipping_form.address}}</p>
+                        <p class="row">City: {{current_user.shipping_form.city}}</p>
+                        <p class="row">State: {{current_user.shipping_form.state}}</p>
+                        <p class="row">Zip: {{current_user.shipping_form.zipcode}}</p>
                     </div>
                     <div class="col d-inline-block pl-5">
-                        <h2 class="row">Billing</h2>
-                        <p class="row">Name:</p>
-                        <p class="row">Address:</p>
-                        <p class="row">City:</p>
-                        <p class="row">State:</p>
-                        <p class="row">Zip:</p>
+                        <h2 class="row" style="font-family: lady radical">billing</h2>
+                        <p class="row">Name: {{current_user.first_name}} {{current_user.last_name}}</p>
+                        <p class="row">Address: {{current_user.billing_form.address}}</p>
+                        <p class="row">City: {{current_user.billing_form.city}}</p>
+                        <p class="row">State: {{current_user.billing_form.state}}</p>
+                        <p class="row">Zip: {{current_user.billing_form.zipcode}}</p>
 
                     </div>
                 </div>

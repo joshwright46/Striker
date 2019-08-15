@@ -34,6 +34,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 INSTALLED_APPS = [
+    'apps.Checkout',
     'apps.login',
     'django.contrib.admin',
     'django.contrib.auth',

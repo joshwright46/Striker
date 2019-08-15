@@ -34,184 +34,192 @@
         {% endfor %}
         {% endif %}
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light"
-            style="height:100px; background-image: linear-gradient(to right,black,  darkred , slateblue, black)" ;>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <img src="" class="img-responsive" alt="">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert-sm alert-danger p-3">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
 
-            <a class="mr-2" href="/"><img src="" alt="" border="0"></a>
-=======
-            <img src="images/strikersb.png" alt="">
-            <a class="mr-2" href="/"><img
-                    src="images/strikersb.png"
-=======
-            <img src="strike2.jpg" alt="">
-            <a class="mr-2" href="/"><img style="width: 275px" src="{% static 'images/strikersb.png' %}"
->>>>>>> b6636b5bb9b91368488019f262404ac455022b9c
-                    alt="graffiti-fonts" border="0"></a>
->>>>>>> master
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light"
+                style="height:100px; background-image: linear-gradient(to right,black,  darkred , slateblue, black)" ;>
+                <img src="strike2.jpg" alt="">
+                <a class="mr-2" href="/"><img style="width: 220px" src="{% static 'images/strikersb.png' %}"
+                        alt="graffiti-fonts" border="0"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <a class="navbar-brand" href="/"><img src="strikersb.png" style="max-width: width 170px;"></a>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link text-light " style="font-size: 17px" href="#">Home <span
-                                class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" style="font-size: 17px" href="/to_profile">My Profile</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light " style="font-size: 17px" href="#"
-                            id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/about">About Us</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/contact">Contact Us</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">How Does It Work?</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Leaderboard</a>
-                        </div>
-                    </li>
-                </ul>
-                <form action="/login" method="post">
-                    {% csrf_token %}
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link text-light " style="font-size: 17px" href="#">Purchase <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" style="font-size: 17px" href="/to_profile">My Profile</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light " style="font-size: 17px" href="#"
+                                id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Info
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/about">About Us</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/contact">Contact Us</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/hiw">How Does It Work?</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Leaderboard</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form action="/login" method="post">
+                        {% csrf_token %}
 
-                    <div class="row">
+                        <div class="row">
 
-                        {% if logged_in == True %}
-                        <div class="col">
-                            <a href="/logout" class="d-inline-block text-light">Log Out</a>
-                            <h4 class="text-light">Welcome {{current_user.first_name}}</h4>
+                            {% if logged_in == True %}
+                            <div class="col">
+                                <div class="row">
+                                    <input class="form-control mt-4 mr-sm-2" style="width:55%" type="search"
+                                        placeholder="Search" aria-label="Search">
+                                    <button class="btn text-light my-2 my-sm-0" style="margin-top: 25px !important"
+                                        type="submit">Search</button>
+                                </div>
+                                <div class="row">
+                                    <p class="text-light mt-3 mr-3">Hi {{current_user.first_name}}!</p>
+                                    <a href="/logout" class="d-inline-block mt-3" style="color: red">Log Out</a>
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="form-group form-inline d-inline-block">
+                                <label class="d-inline-block text-light" for="email">Email:</label>
+                                <input type="email" name="log_email" class="form-control-sm d-inline-block mr-2"
+                                    id="email" placeholder="Enter email">
+                            </div>
+                            <div class="form-group form-inline d-inline-block">
+                                <label class="d-inline-block text-light" for="password">Password:</label>
+                                <input type="password" name="log_password" class="form-control-sm d-inline-block mr-2"
+                                    id="password" placeholder="Enter password">
+                            </div>
+                            <div class="form-group form-inline">
+                                <input type="submit" value="Login"
+                                    class="form-control-sm btn-sm btn-dark d-inline-block mr-2">
+                            </div>
+                            {% endif %}
                         </div>
-                        {% else %}
-                        <div class="form-group form-inline d-inline-block">
-                            <label class="d-inline-block text-light" for="email">Email:</label>
-                            <input type="email" name="log_email" class="form-control-sm d-inline-block mr-2" id="email"
-                                placeholder="Enter email">
-                        </div>
-                        <div class="form-group form-inline d-inline-block">
-                            <label class="d-inline-block text-light" for="password">Password:</label>
-                            <input type="password" name="log_password" class="form-control-sm d-inline-block mr-2"
-                                id="password" placeholder="Enter password">
-                        </div>
-                        <div class="form-group form-inline">
-                            <input type="submit" value="Login"
-                                class="form-control-sm btn-sm btn-dark d-inline-block mr-2">
-                        </div>
-                        {% endif %}
-                    </div>
 
-                    <!-- <div class="row">
+                        <!-- <div class="row">
                             <p class="text-light">Welcome {{current_user.first_name}}!</p>
                         </div> -->
 
-                </form>
+                    </form>
 
+
+                </div>
+            </nav>
+
+
+
+
+            <div class="jumbotron m-0 text-center" style="background: url(strike.jpg);">
+                <div class="col-5 pt-5 d-inline-block align-top text-light mr-4 shadow">
+                    <h1 class="row mb-5 mt-5 ml-0" style="font-family: lady radical; font-size: 60px">• cop every time
+                    </h1>
+                    <h1 class="row mb-5 mt-5 ml-0" style="font-family: lady radical; font-size: 60px">• increase odds
+                    </h1>
+                    <h1 class="row mb-5 mt-5 ml-0" style="font-family: lady radical; font-size: 60px">• new releases
+                    </h1>
+                    <h1 class="row mb-5 mt-5 ml-0" style="font-family: lady radical; font-size: 60px">• what you want
+                    </h1>
+                </div>
+
+                <div class="col-5 rounded d-inline-block align-top text-light" style="background-color: black">
+                    <h2 style="font-family: lady radical">register</h2>
+                    <form action="/registration" method="post">
+                        {% csrf_token %}
+                        <div class="col">
+                            <div class="form-group row">
+                                <label for="first_name">First Name:</label>
+                                <input type="text" name="first_name" class="form-control" id="first_name"
+                                    placeholder="Enter first name">
+                            </div>
+                            <div class="form-group row">
+                                <label for="last_name">Last Name:</label>
+                                <input type="text" name="last_name" class="form-control" id="last_name"
+                                    placeholder="Enter last name">
+                            </div>
+                            <div class="form-group row">
+                                <label for="user_name">User Name:</label>
+                                <input type="text" name="user_name" class="form-control" id="user_name"
+                                    placeholder="Choose a user name">
+                            </div>
+                            <div class="form-group row">
+                                <label for="email">Email:</label>
+                                <input type="email" name="reg_email" class="form-control" id="email"
+                                    placeholder="Enter email">
+                            </div>
+                            <div class="form-group row">
+                                <label for="password">Password:</label>
+                                <input type="password" name="reg_password" class="form-control" id="password"
+                                    placeholder="Enter password">
+                            </div>
+                            <div class="form-group row mb-5">
+                                <label for="confirm_password">Confirm Password:</label>
+                                <input type="password" name="confirm_password" class="form-control"
+                                    id="confirm_password" placeholder="Re-enter password">
+                            </div>
+                            <div class="form-group row">
+                                <input type="submit" value="Register"
+                                    class="form-control btn btn-light btn-block shadow">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
 
             </div>
-        </nav>
 
+            <div class="footer text-center pt-3 pb-3 text-light"
+                style="height:100px; background-image: linear-gradient(to right, black, slateblue  , darkred, black)">
+                <p>
+                    <a class="text-light" href="/about">About Us </a>|
+                    <a class="text-light" href="/faq"> FAQ </a>|
+                    <a class="text-light" href="/contact"> Contact Us</a>
 
+                </p>
+                <p>
+                    <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/fb.png' %}" alt="" />
+                        @Strikers</a>
+                    <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/ig.png' %}" alt="" />
+                        @Strikers</a>
+                    <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/t.png' %}" alt="">
+                        @Strikers</a>
+                </p>
 
-
-        <div class="jumbotron m-0 text-center" style="background: url(strike.jpg);">
-            <div class="col-5 pt-5 d-inline-block align-top text-light mr-4 shadow">
-                <h1 class="row mb-5 mt-5 ml-0" style="font-family: lady radical; font-size: 60px">• cop every time</h1>
-                <h1 class="row mb-5 mt-5 ml-0" style="font-family: lady radical; font-size: 60px">• increase odds</h1>
-                <h1 class="row mb-5 mt-5 ml-0" style="font-family: lady radical; font-size: 60px">• new releases</h1>
-                <h1 class="row mb-5 mt-5 ml-0" style="font-family: lady radical; font-size: 60px">• what you want</h1>
-            </div>
-
-            <div class="col-5 rounded d-inline-block align-top text-light" style="background-color: black">
-                <h2>Register</h2>
-                <form action="/registration" method="post">
-                    {% csrf_token %}
-                    <div class="col">
-                        <div class="form-group row">
-                            <label for="first_name">First Name:</label>
-                            <input type="text" name="first_name" class="form-control" id="first_name"
-                                placeholder="Enter first name">
-                        </div>
-                        <div class="form-group row">
-                            <label for="last_name">Last Name:</label>
-                            <input type="text" name="last_name" class="form-control" id="last_name"
-                                placeholder="Enter last name">
-                        </div>
-                        <div class="form-group row">
-                            <label for="user_name">User Name:</label>
-                            <input type="text" name="user_name" class="form-control" id="user_name"
-                                placeholder="Choose a user name">
-                        </div>
-                        <div class="form-group row">
-                            <label for="email">Email:</label>
-                            <input type="email" name="reg_email" class="form-control" id="email"
-                                placeholder="Enter email">
-                        </div>
-                        <div class="form-group row">
-                            <label for="password">Password:</label>
-                            <input type="password" name="reg_password" class="form-control" id="password"
-                                placeholder="Enter password">
-                        </div>
-                        <div class="form-group row mb-5">
-                            <label for="confirm_password">Confirm Password:</label>
-                            <input type="password" name="confirm_password" class="form-control" id="confirm_password"
-                                placeholder="Re-enter password">
-                        </div>
-                        <div class="form-group row">
-                            <input type="submit" value="Register" class="form-control btn btn-light btn-block shadow">
-                        </div>
-                    </div>
-                </form>
 
             </div>
 
         </div>
 
-        <div class="footer text-center pt-3 pb-3 text-light"
-            style="height:100px; background-image: linear-gradient(to right, black, slateblue  , darkred, black)">
-            <p>
-                <a class="text-light" href="/about">About Us </a>|
-                <a class="text-light" href="/faq"> FAQ </a>|
-                <a class="text-light" href="/contact"> Contact Us</a>
-
-            </p>
-            <p>
-                <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/fb.png' %}" alt="" />
-                    @Strikers</a>
-                <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/ig.png' %}" alt="" />
-                    @Strikers</a>
-                <a class="mr-3" href=""><img style=" width: 30px" src="{% static 'images/t.png' %}" alt="">
-                    @Strikers</a>
-            </p>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
-        </div>
-
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
-    <script src="{% static 'js/profile.js' %}"></script>
+        <script src="{% static 'js/profile.js' %}"></script>
 </body>
 
 </html>
