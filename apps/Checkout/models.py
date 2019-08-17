@@ -5,25 +5,46 @@ class FormManager(models.Manager):
     def form_validator(self, postData):
         errors = {}
 
-        if len(postData['first_name']) < 2:
+        if len(postData['shipping_first_name']) < 2:
             errors['first_name'] = "First Name should be at least 2 characters!"
-        if len(postData['last_name']) < 2:
+        if len(postData['shipping_last_name']) < 2:
             errors['last_name'] = "Last Name should be at least 2 characters!"
-        if len(postData['city']) < 3:
+        if len(postData['shipping_city']) < 3:
             errors['city'] = "City should be at least 3 characters!"
-        if postData['city'] != postData['city']:
+        if (postData['shipping_city']) == 0:
             errors['city_blank'] = "City cannot be blank"
-        if len(postData['address']) < 0:
+        if len(postData['shipping_address']) < 0:
             errors['address_blank'] = "Address cannot be blank"
-        if len(postData['address']) < 5:
+        if len(postData['shipping_address']) < 5:
             errors['address_invalid'] = "Invalid Address"
-        if postData['zipcode'] < 5:
+        if (postData['shipping_zip']) == 0:
             errors['zipcode_invalid'] = "Zipcode Invalid"
-        if len(postData['state']) == 0:
+        if len(postData['shipping_state']) == 0:
             errors['state_blank'] = 'State must be selected'
 
         return errors
 
+    def bill_validator(self, postData):
+        errors = {}
+
+        if len(postData['billing_first_name']) < 2:
+            errors['first_name'] = "First Name should be at least 2 characters!"
+        if len(postData['billing_last_name']) < 2:
+            errors['last_name'] = "Last Name should be at least 2 characters!"
+        if len(postData['billing_city']) < 3:
+            errors['city'] = "City should be at least 3 characters!"
+        if (postData['billing_city']) == 0:
+            errors['city_blank'] = "City cannot be blank"
+        if len(postData['billing_address']) < 0:
+            errors['address_blank'] = "Address cannot be blank"
+        if len(postData['billing_address']) < 5:
+            errors['address_invalid'] = "Invalid Address"
+        if (postData['billing_zip']) == 0:
+            errors['zipcode_invalid'] = "Zipcode Invalid"
+        if len(postData['billing_state']) == 0:
+            errors['state_blank'] = 'State must be selected'
+
+        return errors
 
 class Product(models.Model):
     title = models.CharField(max_length=140)

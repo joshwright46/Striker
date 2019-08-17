@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link text-light " style="font-size: 17px" href="#">Home <span
+                        <a class="nav-link text-light " style="font-size: 17px" href="#">Purchase <span
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
@@ -36,7 +36,7 @@
                         <a class="nav-link dropdown-toggle text-light " style="font-size: 17px" href="#"
                             id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                            Dropdown
+                            Info
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/about">About Us</a>
@@ -50,8 +50,22 @@
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
+                    {% if logged_in == True %}
+                    <div class="col">
+                        <div class="row">
+                            <input class="form-control mt-4 mr-sm-2" style="width:55%" type="search"
+                                placeholder="Search" aria-label="Search">
+                            <button class="btn text-light my-2 my-sm-0" style="margin-top: 25px !important"
+                                type="submit">Search</button>
+                        </div>
+                        <div class="row">
+                            <a href="/logout" class="d-block mt-2 mb-2" style="color: red;">Log Out</a>
+                        </div>
+                    </div>
+                    {% else %}
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn text-light  my-2 my-sm-0" type="submit">Search</button>
+                    {% endif %}
                 </form>
             </div>
         </nav>
@@ -63,56 +77,40 @@
             <h1 class="text-light" style="font-family: lady radical; font-size: 60px">faq</h1>
             <hr>
             <div class="question row">
-                <h1 class="d-inline-block text-light col-1 pt-2" style="font-family: lady radical">q:</h1>
-                <p class="d-inline-block text-light  col">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Explicabo autem numquam porro pariatur dolor neque labore animi voluptatum eaque laudantium,
-                    reiciendis libero suscipit dolorum repellat tenetur quod iure dolores rem?</p>
+                <h1 class="d-inline-block text-light col-1" style="font-family: lady radical">q:</h1>
+                <p class="d-inline-block text-light  col">What websites does Strikers support?</p>
             </div>
             <div class="answer border-bottom text-light row">
-                <h1 class="d-inline-block text-light col-1 pt-2" style="font-family: lady radical">a:</h1>
-                <p class="d-inline-block text-light  col">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Explicabo autem numquam porro pariatur dolor neque labore animi voluptatum eaque laudantium,
-                    reiciendis libero suscipit dolorum repellat tenetur quod iure dolores rem?</p>
+                <h1 class="d-inline-block text-light col-1" style="font-family: lady radical">a:</h1>
+                <p class="d-inline-block text-light  col">Strikers is committed to giving customers a boost in the market on all Shopify sites.</p>
             </div><br><br>
 
             <div class="question row">
-                <h1 class="d-inline-block text-light col-1 pt-2" style="font-family: lady radical">q:</h1>
-                <p class="d-inline-block text-light  col">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Explicabo autem numquam porro pariatur dolor neque labore animi voluptatum eaque laudantium,
-                    reiciendis libero suscipit dolorum repellat tenetur quod iure dolores rem?</p>
+                <h1 class="d-inline-block text-light col-1" style="font-family: lady radical">q:</h1>
+                <p class="d-inline-block text-light  col">Is STRIKER only good for sneakers?</p>
             </div>
             <div class="answer border-bottom text-light row">
-                <h1 class="d-inline-block text-light col-1 pt-2" style="font-family: lady radical">a:</h1>
-                <p class="d-inline-block text-light  col">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Explicabo autem numquam porro pariatur dolor neque labore animi voluptatum eaque laudantium,
-                    reiciendis libero suscipit dolorum repellat tenetur quod iure dolores rem?</p>
+                <h1 class="d-inline-block text-light col-1" style="font-family: lady radical">a:</h1>
+                <p class="d-inline-block text-light  col">STRIKER can purchase any product on the website.</p>
             </div><br><br>
 
             <div class="question row">
-                <h1 class="d-inline-block text-light col-1 pt-2" style="font-family: lady radical">q:</h1>
-                <p class="d-inline-block text-light  col">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Explicabo autem numquam porro pariatur dolor neque labore animi voluptatum eaque laudantium,
-                    reiciendis libero suscipit dolorum repellat tenetur quod iure dolores rem?</p>
+                <h1 class="d-inline-block text-light col-1" style="font-family: lady radical">q:</h1>
+                <p class="d-inline-block text-light  col">What operating system is STRIKER compatiable with?</p>
             </div>
             <div class="answer border-bottom text-light row">
-                <h1 class="d-inline-block text-light col-1 pt-2" style="font-family: lady radical">a:</h1>
-                <p class="d-inline-block text-light  col">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Explicabo autem numquam porro pariatur dolor neque labore animi voluptatum eaque laudantium,
-                    reiciendis libero suscipit dolorum repellat tenetur quod iure dolores rem?</p>
+                <h1 class="d-inline-block text-light col-1" style="font-family: lady radical">a:</h1>
+                <p class="d-inline-block text-light  col">STRIKER is compatible with Windows 10, MacOS, Linux and UBUNTU.</p>
             </div><br><br>
 
 
             <div class="question row">
-                <h1 class="d-inline-block text-light col-1 pt-2" style="font-family: lady radical">q:</h1>
-                <p class="d-inline-block text-light  col">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Explicabo autem numquam porro pariatur dolor neque labore animi voluptatum eaque laudantium,
-                    reiciendis libero suscipit dolorum repellat tenetur quod iure dolores rem?</p>
+                <h1 class="d-inline-block text-light col-1" style="font-family: lady radical">q:</h1>
+                <p class="d-inline-block text-light  col">How many products can I purchase at a time?</p>
             </div>
             <div class="answer border-bottom text-light row">
-                <h1 class="d-inline-block text-light col-1 pt-2" style="font-family: lady radical">a:</h1>
-                <p class="d-inline-block text-light  col">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Explicabo autem numquam porro pariatur dolor neque labore animi voluptatum eaque laudantium,
-                    reiciendis libero suscipit dolorum repellat tenetur quod iure dolores rem?</p>
+                <h1 class="d-inline-block text-light col-1" style="font-family: lady radical">a:</h1>
+                <p class="d-inline-block text-light  col">Only one product can be que'd and purchaed at a time.</p>
             </div><br><br>
 
         </div>

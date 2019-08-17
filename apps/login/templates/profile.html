@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link text-light " style="font-size: 17px" href="#">Home <span
+                        <a class="nav-link text-light " style="font-size: 17px" href="#">Purchase <span
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
@@ -52,53 +52,65 @@
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
+                        {% if logged_in == True %}
+                        <div class="col">
+                            <div class="row">
+                                <input class="form-control mt-4 mr-sm-2" style="width:55%" type="search"
+                                    placeholder="Search" aria-label="Search">
+                                <button class="btn text-light my-2 my-sm-0" style="margin-top: 25px !important"
+                                    type="submit">Search</button>
+                            </div>
+                            <div class="row">
+                                <a href="/logout" class="d-block mt-2 mb-2" style="color: red;">Log Out</a>
+                            </div>
+                        </div>
+                        {% else %}
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn text-light  my-2 my-sm-0" type="submit">Search</button>
+                    {% endif %}
                 </form>
             </div>
         </nav>
 
         <div class="jumbotron m-0 text-center" style="background-color: black">
 
-            <div class="head_pic"
-                style="background: url('{{user.profile_pic}}'); -webkit-background-size: cover; background-size: cover; height:300px">
+                <div class="info">
+            <div class="pic" style="position: relative;">
+                <img style="width: 275px; height: 275px; max-width: 275px; max-height: 275px; border-radius: 50%; border: 5px solid black  "
+                    src="{{current_user.profile_pic.url}}" alt="">
             </div>
-            <div class="pic" style="position: relative; top: -100px; margin-bottom: -200px;">
-                <img style="width: 200px; height: 200px; max-width: 200px; max-height: 200px; border-radius: 50%; border: 5px solid black  "
-                    src="strike.jpg" alt="">
-            </div>
-            <div class="info bg-dark" style="padding: 5%;">
-                <h3 class="text-light mt-5">{{current_user.user_name}}</h3>
+            
+                <h1 class="text-light">{{current_user.user_name}}</h1>
                 <h4 class="text-light">{{current_user.shipping_form.city}}, {{current_user.shipping_form.state}}</h4>
                 <p class="text-light">{{current_user.bio}}</p>
                 <hr>
 
 
-                <div class="text-light d-inline-block" id="info"><a class="text-light" href="#">Info </a> |</div>
-                <div class="text-light d-inline-block" id="recent"><a class="text-light" href="#">Recent Purchases</a> |
+                <div class="text-light d-inline-block" id="info"><a class="text-slateblue" href="#">Info </a> |</div>
+                <div class="text-light d-inline-block" id="recent"><a class="text-slateblue" href="#">Recent Purchases</a> |
                 </div>
-                <div class="text-light d-inline-block" id="favorites"><a class="text-light" href="#">Favorites</a></div>
+                <div class="text-light d-inline-block mb-3" id="favorites"><a class="text-slateblue" href="#">Favorites</a></div>
                 <div class="text-light mt-3 row" id="info_panel">
-                    <div class="col d-inline-block border-right pl-5">
-                        <h2 class="row" style="font-family: lady radical">shipping</h2>
-                        <p class="row" >Name: {{current_user.first_name}} {{current_user.last_name}}</p>
-                        <p class="row">Address: {{current_user.shipping_form.address}}</p>
-                        <p class="row">City: {{current_user.shipping_form.city}}</p>
-                        <p class="row">State: {{current_user.shipping_form.state}}</p>
-                        <p class="row">Zip: {{current_user.shipping_form.zipcode}}</p>
+                    <div class="col d-inline-block border-right">
+                        <h2 class="row d-block" style="font-family: lady radical">shipping</h2>
+                        <p class="row d-block" >Name: {{current_user.first_name}} {{current_user.last_name}}</p>
+                        <p class="row d-block">Address: {{current_user.shipping_form.address}}</p>
+                        <p class="row d-block">City: {{current_user.shipping_form.city}}</p>
+                        <p class="row d-block">State: {{current_user.shipping_form.state}}</p>
+                        <p class="row d-block">Zip: {{current_user.shipping_form.zipcode}}</p>
                     </div>
-                    <div class="col d-inline-block pl-5">
-                        <h2 class="row" style="font-family: lady radical">billing</h2>
-                        <p class="row">Name: {{current_user.first_name}} {{current_user.last_name}}</p>
-                        <p class="row">Address: {{current_user.billing_form.address}}</p>
-                        <p class="row">City: {{current_user.billing_form.city}}</p>
-                        <p class="row">State: {{current_user.billing_form.state}}</p>
-                        <p class="row">Zip: {{current_user.billing_form.zipcode}}</p>
+                    <div class="col d-inline-block">
+                        <h2 class="row d-block" style="font-family: lady radical">billing</h2>
+                        <p class="row d-block">Name: {{current_user.first_name}} {{current_user.last_name}}</p>
+                        <p class="row d-block">Address: {{current_user.billing_form.address}}</p>
+                        <p class="row d-block">City: {{current_user.billing_form.city}}</p>
+                        <p class="row d-block">State: {{current_user.billing_form.state}}</p>
+                        <p class="row d-block">Zip: {{current_user.billing_form.zipcode}}</p>
 
                     </div>
                 </div>
-                <div class="text-light mt-3" style="display: none" id="recent_panel">bkjbfnlnfdnaslfndkns</div>
-                <div class="text-light mt-3" style="display: none" id="favorites_panel">hi</div>
+                <div class="text-light mt-3" style="display: none" id="recent_panel">You have not made any purchases yet!</div>
+                <div class="text-light mt-3" style="display: none" id="favorites_panel">You have not added any favorites yet!</div>
 
 
 

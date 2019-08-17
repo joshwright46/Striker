@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link text-light " style="font-size: 17px" href="#">Home <span
+                        <a class="nav-link text-light " style="font-size: 17px" href="#">Purchase <span
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
@@ -36,7 +36,7 @@
                         <a class="nav-link dropdown-toggle text-light " style="font-size: 17px" href="#"
                             id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                            Dropdown
+                            Info
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/about">About Us</a>
@@ -50,8 +50,22 @@
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
+                        {% if logged_in == True %}
+                        <div class="col">
+                            <div class="row">
+                                <input class="form-control mt-4 mr-sm-2" style="width:55%" type="search"
+                                    placeholder="Search" aria-label="Search">
+                                <button class="btn text-light my-2 my-sm-0" style="margin-top: 25px !important"
+                                    type="submit">Search</button>
+                            </div>
+                            <div class="row">
+                                <a href="/logout" class="d-block mt-2 mb-2" style="color: red;">Log Out</a>
+                            </div>
+                        </div>
+                        {% else %}
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn text-light  my-2 my-sm-0" type="submit">Search</button>
+                    {% endif %}
                 </form>
             </div>
         </nav>
@@ -62,22 +76,22 @@
                     <h1 class="border-bottom text-light mb-5 pb-5" style="font-family: lady radical; font-size: 60px">
                         how it works</h1>
                 </div>
-                <div class="row">
+                <div class="row d-block">
                     <h2 class=" text-light" style="font-family: lady radical">1. register</h2>
                 </div>
-                <div class="row">
+                <div class="row d-block">
                     <h2 class=" text-light" style="font-family: lady radical">2. edit your profile</h2>
                 </div>
-                <div class="row">
+                <div class="row d-block">
                     <h2 class=" text-light" style="font-family: lady radical">3. input your billing/shipping</h2>
                 </div>
-                <div class="row">
+                <div class="row d-block">
                     <h2 class=" text-light" style="font-family: lady radical">4 provide yout product title</h2>
                 </div>
-                <div class="row">
+                <div class="row d-block">
                     <h2 class=" text-light" style="font-family: lady radical">5. submit and wait for email</h2>
                 </div>
-                <div class="row" style="margin-bottom:200px;">
+                <div class="row d-block" style="margin-bottom:200px;">
                     <h2 class=" text-light" style="font-family: lady radical">6. strike your product</h2>
                 </div>
                 </div>

@@ -65,7 +65,6 @@ def login(request):
 
 def success(request):
     if request.session['logged_in'] != True:
-        print("User logged in...")
         return redirect('/')
 
     else:
@@ -76,7 +75,12 @@ def success(request):
         return render(request, 'success.html', context)
 
 def faq(request):
-    return render(request, 'faq.html')
+
+    context={
+        'logged_in': request.session['logged_in'],
+    }
+
+    return render(request, 'faq.html', context)
 
 def pic_upload(request):
     form = DocumentForm(request.POST, request.FILES)
@@ -117,8 +121,8 @@ def new_profile(request):
 #     return redirect('/profile')
 
 def bio(request):
-    print('*' * 50)
-    print('bio reached')
+    if request.session['logged_in'] != True:
+        return redirect('/')
     return render(request, 'bio.html')
 
 def bio_submit(request):
@@ -130,29 +134,48 @@ def bio_submit(request):
     return redirect('/shipping')
 
 def shipping(request):
+    if request.session['logged_in'] != True:
+        return redirect('/')
     return render(request, 'shipping.html')
 
 def shipping_submit(request):
-    user = User.objects.get(id = request.session['current_user_id'])
+    reg_errors = Shipping.objects.form_validator(request.POST)
+    if len(reg_errors) > 0:
+        for key , value in reg_errors.items():
+            messages.error(request, value, extra_tags='reg_error')
+        return redirect('/shipping')
+    else:
+        user = User.objects.get(id = request.session['current_user_id'])
 
-    Shipping.objects.create(first_name = request.POST['shipping_first_name'], last_name = request.POST['shipping_last_name'], address = request.POST['shipping_address'], city = request.POST['shipping_city'], zipcode = request.POST['shipping_zip'], state = request.POST['shipping_state'], user =  user)
-    return redirect('/billing')
+        Shipping.objects.create(first_name = request.POST['shipping_first_name'], last_name = request.POST['shipping_last_name'], address = request.POST['shipping_address'], city = request.POST['shipping_city'], zipcode = request.POST['shipping_zip'], state = request.POST['shipping_state'], user =  user)
+        return redirect('/billing')
 
 def billing(request):
-    return render(request, 'billing.html')
+        if request.session['logged_in'] != True:
+            return redirect('/')
+        return render(request, 'billing.html')
 
 def billing_submit(request):
-    user = User.objects.get(id = request.session['current_user_id'])
-
-    Billing.objects.create(first_name = request.POST['billing_first_name'], last_name = request.POST['billing_last_name'], address = request.POST['billing_address'], city = request.POST['billing_city'], zipcode = request.POST['billing_zip'], state = request.POST['billing_state'], phone_number = request.POST['billing_phone'], user = user )
-    return redirect('/profile')
+    reg_errors = Billing.objects.bill_validator(request.POST)
+    if len(reg_errors) > 0:
+        for key , value in reg_errors.items():
+            messages.error(request, value, extra_tags='reg_error')
+        return redirect('/billing')
+    else:
+        user = User.objects.get(id = request.session['current_user_id'])
+        Billing.objects.create(first_name = request.POST['billing_first_name'], last_name = request.POST['billing_last_name'], address = request.POST['billing_address'], city = request.POST['billing_city'], zipcode = request.POST['billing_zip'], state = request.POST['billing_state'], phone_number = request.POST['billing_phone'], user = user )
+        return redirect('/profile')
 
 def profile(request):
+    if request.session['logged_in'] != True:
+        return redirect('/')
+
     current_user = User.objects.get(id = request.session['current_user_id'])
     print('-'*50)
     print(current_user.first_name)
     context = {
-        'current_user': current_user
+        'current_user': current_user,
+        'logged_in': request.session['logged_in']
     }
     return render(request, 'profile.html', context)
 
@@ -171,14 +194,23 @@ def to_profile(request):
     
 
 def about(request):
-    return render(request, "about.html")
+    context={
+        'logged_in': request.session['logged_in'],
+    }
+    return render(request, "about.html", context)
 
 
 def contact(request):
-    return render(request, "contact.html")
+    context={
+        'logged_in': request.session['logged_in'],
+    }
+    return render(request, "contact.html", context)
 
 def hiw(request):
-    return render(request, "hiw.html")
+    context={
+        'logged_in': request.session['logged_in'],
+    }
+    return render(request, "hiw.html", context)
 
 
 def logout(request):

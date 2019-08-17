@@ -13,6 +13,15 @@
 
 <body style="background-color: black">
     <div class="container">
+
+        {% if messages %}
+        {% for message in messages %}
+        {%if 'reg_error' in message.extra_tags %}
+        <div class="alert alert-danger">{{ message }}</div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light"
             style="height:100px; background-image: linear-gradient(to right,black,  darkred , slateblue, black)" ;>
             <img src="strike2.jpg" alt="">
@@ -26,7 +35,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link text-light " style="font-size: 17px" href="#">Home <span
+                        <a class="nav-link text-light " style="font-size: 17px" href="#">Purchase <span
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
@@ -36,7 +45,7 @@
                         <a class="nav-link dropdown-toggle text-light " style="font-size: 17px" href="#"
                             id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                            Dropdown
+                            Info
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/about">About Us</a>
@@ -60,68 +69,62 @@
             <div class="col-5 rounded d-inline-block align-top text-light pl-5 pr-5 pt-2">
                 <h2>Billing</h2>
                 <form action="/billing_submit" method="post">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="form-group form-inline col-6 p-0">
-                        <label for="billing_first_name">First Name:</label>
-                        <input type="text" name="billing_first_name" class="form-control-sm" id="billing_first_name"
-                            placeholder="Enter first name">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="form-group form-inline col-6 p-0">
+                            <label for="billing_first_name">First Name:</label>
+                            <input type="text" name="billing_first_name" class="form-control-sm" id="billing_first_name"
+                                placeholder="Enter first name">
+                        </div>
+                        <div class="form-group form-inline col-6 p-0">
+                            <label for="billing_last_name">Last Name:</label>
+                            <input type="text" name="billing_last_name" class="form-control-sm" id="billing_last_name"
+                                placeholder="Enter last name">
+                        </div>
                     </div>
-                    <div class="form-group form-inline col-6 p-0">
-                        <label for="billing_last_name">Last Name:</label>
-                        <input type="text" name="billing_last_name" class="form-control-sm" id="billing_last_name"
-                            placeholder="Enter last name">
+                    <div class="form-group row">
+                        <label for="billing_address">Street Address:</label>
+                        <input type="text" name="billing_address" class="form-control" id="billing_address"
+                            placeholder="Choose a user name">
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="billing_address">Street Address:</label>
-                    <input type="text" name="billing_address" class="form-control" id="billing_address"
-                        placeholder="Choose a user name">
-                </div>
 
-                <div class="row">
-                    <div class="form-group form-inline col-6 p-0">
-                        <label for="billing_city">City:</label>
-                        <input type="text" name="billing_city" class="form-control-sm" id="billing_city"
-                            placeholder="Enter first name">
+                    <div class="row">
+                        <div class="form-group form-inline col-6 p-0">
+                            <label for="billing_city">City:</label>
+                            <input type="text" name="billing_city" class="form-control-sm" id="billing_city"
+                                placeholder="Enter first name">
+                        </div>
+                        <div class="form-group form-inline col-6 p-0">
+                            <label for="billing_state">State:</label>
+                            <input type="text" name="billing_state" class="form-control-sm" id="billing_state"
+                                placeholder="Enter last name">
+                        </div>
                     </div>
-                    <div class="form-group form-inline col-6 p-0">
-                        <label for="billing_state">State:</label>
-                        <input type="text" name="billing_state" class="form-control-sm" id="billing_state"
-                            placeholder="Enter last name">
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="form-group form-inline col-6 p-0">
-                        <label for="billing_zip">Zip Code:</label>
-                        <input type="text" name="billing_zip" class="form-control-sm" id="billing_zip"
-                            placeholder="Enter first name">
+                    <div class="row">
+                        <div class="form-group form-inline col-6 p-0">
+                            <label for="billing_zip">Zip Code:</label>
+                            <input type="text" name="billing_zip" class="form-control-sm" id="billing_zip"
+                                placeholder="Enter first name">
+                        </div>
+                        <div class="form-group form-inline col-6 p-0">
+                            <label for="billing_country">Country:</label>
+                            <input type="text" name="billing_country" class="form-control-sm" id="billing_country"
+                                placeholder="Enter last name">
+                        </div>
                     </div>
-                    <div class="form-group form-inline col-6 p-0">
-                        <label for="billing_country">Country:</label>
-                        <input type="text" name="billing_country" class="form-control-sm" id="billing_country"
-                            placeholder="Enter last name">
+
+                    <div class="form-group row">
+                        <label for="billing_phone">Phone Number:</label>
+                        <input type="text" name="billing_phone" class="form-control" id="billing_phone"
+                            placeholder="Choose a user name">
                     </div>
-                </div>
+                    <div class="form-group row">
+                        <input type="submit" value="Done" class="form-control btn btn-light btn-block shadow">
+                    </div>
+                </form>
 
-                <div class="form-group row">
-                    <label for="billing_phone">Phone Number:</label>
-                    <input type="text" name="billing_phone" class="form-control" id="billing_phone"
-                        placeholder="Choose a user name">
-                </div>
-                <div class="form-group row">
-                    <input type="submit" value="Done" class="form-control btn btn-light btn-block shadow">
-                </div>
-            </form>
 
-                {% if messages %}
-                {% for message in messages %}
-                {%if 'reg_error' in message.extra_tags %}
-                <div class="alert alert-danger">{{ message }}</div>
-                {% endif %}
-                {% endfor %}
-                {% endif %}
             </div>
 
         </div>

@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link text-light " style="font-size: 17px" href="#">Home <span
+                        <a class="nav-link text-light " style="font-size: 17px" href="#">Purchase <span
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
@@ -36,23 +36,38 @@
                         <a class="nav-link dropdown-toggle text-light " style="font-size: 17px" href="#"
                             id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                            Dropdown
+                            Info
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/about">About Us</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/contact">Contact Us</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/hiw">How Does It Work?</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Leaderboard</a>
+                            <a class="dropdown-item" href="/about">About Us</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/contact">Contact Us</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/hiw">How Does It Work?</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Leaderboard</a>
                         </div>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
+                    {% if logged_in == True %}
+                    <div class="col">
+                        <div class="row">
+                            <input class="form-control mt-4 mr-sm-2" style="width:55%" type="search"
+                                placeholder="Search" aria-label="Search">
+                            <button class="btn text-light my-2 my-sm-0" style="margin-top: 25px !important"
+                                type="submit">Search</button>
+                        </div>
+                        <div class="row">
+                            <a href="/logout" class="d-block mt-2 mb-2" style="color: red;">Log Out</a>
+                        </div>
+                    </div>
+                    {% else %}
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn text-light  my-2 my-sm-0" type="submit">Search</button>
+                    {% endif %}
                 </form>
+
             </div>
         </nav>
 
@@ -63,11 +78,10 @@
                         about strikers</h1>
                 </div>
                 <div class="row" style="margin-bottom:200px;">
-                    <p class=" text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque libero iure
-                        excepturi veritatis ex iste quia officia magni, molestias, odit a temporibus eos fugiat
-                        architecto ut. Possimus ad quia reprehenderit? Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Voluptatibus sed, velit obcaecati, omnis aperiam asperiores eligendi explicabo
-                        repudiandae pariatur at modi adipisci ad natus deserunt nulla, animi unde quae nemo.</p>
+                    <p class=" text-light">SneakerBots have become essential in the street-wear ecosystem. Strikers
+                        provides a niche service that gives you a chance to pay retail price for some of street-wear’s
+                        hottest drops. Whether you want to resell the items or wear them, Strikers is committed to
+                        giving Shopify customers a boost in a hyper competitive market.</p>
                 </div>
             </div>
         </div>
